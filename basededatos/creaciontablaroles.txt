@@ -1,0 +1,14 @@
+CREATE TABLE roles (
+    id_rol INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    descripcion VARCHAR(255),
+    activo TINYINT(1) DEFAULT 1,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO roles(nombre, descripcion)
+VALUES
+('ADMIN','Administrador General'),
+('RECOLECTOR','Ingreso de encuestas'),
+('CONSULTA','Consulta de reportes'),
+('DESCARGA','Consulta y descarga de base de datos');

@@ -1,0 +1,14 @@
+CREATE TABLE sesiones (
+    id_sesion BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+    id_usuario INT NOT NULL,
+
+    fecha_inicio DATETIME NOT NULL,
+    fecha_fin DATETIME NULL,
+
+    ip VARCHAR(50),
+    navegador TEXT,
+
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario)
+);
