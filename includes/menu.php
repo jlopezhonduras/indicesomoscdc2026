@@ -4,7 +4,8 @@ if(session_status() == PHP_SESSION_NONE){
 }
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
 
 <div class="container-fluid">
 
@@ -120,40 +121,40 @@ data-bs-target="#navbarPrincipal">
 
     <li class="nav-item dropdown">
 
-        <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        data-bs-toggle="dropdown">
+    <a
+    class="nav-link dropdown-toggle"
+    href="#"
+    data-bs-toggle="dropdown">
 
-        Encuestas
+    Encuestas
 
-        </a>
+    </a>
 
-        <ul class="dropdown-menu">
+    <ul class="dropdown-menu">
 
-            <li>
-                <a
-                class="dropdown-item"
-                href="#">
+        <li>
+            <a
+            class="dropdown-item"
+            href="/indicesomos/modulos/encuestas/formulario.php">
 
-                Captura de Datos
+            Nueva Encuesta
 
-                </a>
-            </li>
+            </a>
+        </li>
 
-            <li>
-                <a
-                class="dropdown-item"
-                href="#">
+        <li>
+            <a
+            class="dropdown-item"
+            href="/indicesomos/modulos/encuestas/index.php">
 
-                Formularios
+            Listado de Encuestas
 
-                </a>
-            </li>
+            </a>
+        </li>
 
-        </ul>
+    </ul>
 
-    </li>
+</li>
 
     <!-- REPORTES -->
 
