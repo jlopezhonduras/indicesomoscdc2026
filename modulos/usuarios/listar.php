@@ -7,34 +7,35 @@ $cn = $db->conectar();
 
 $sql = "
 SELECT
-u.id_usuario,
-u.nombres,
-u.apellidos,
-u.usuario,
-u.correo,
-r.nombre AS rol
+u.*,
+r.nombre AS rol,
+o.nombre AS organizacion
 FROM usuarios u
 INNER JOIN roles r
-ON u.id_rol=r.id_rol
-ORDER BY u.nombres
+ON u.id_rol = r.id_rol
+INNER JOIN organizaciones o
+ON u.id_organizacion = o.id_organizacion
+ORDER BY u.nombres,u.apellidos
 ";
 
-$rs = $cn->query($sql);
+$resultado = $cn->query($sql);
 
 ?>
 
 <table class="table table-bordered table-hover">
 
-<thead>
+<thead class="table-dark">
 
 <tr>
 
 <th>ID</th>
 <th>Nombre</th>
-<th>Usuario</th>
 <th>Correo</th>
+<th>Teléfono</th>
 <th>Rol</th>
-<th></th>
+<th>Organización</th>
+<th>Estado</th>
+<th width="180">Acciones</th>
 
 </tr>
 
@@ -42,33 +43,77 @@ $rs = $cn->query($sql);
 
 <tbody>
 
-<?php while($row = $rs->fetch_assoc()){ ?>
+<?php while($fila = $resultado->fetch_assoc()){ ?>
 
 <tr>
 
-<td><?= $row["id_usuario"] ?></td>
-
 <td>
-<?= $row["nombres"] ?>&nbsp
-<?= $row["apellidos"] ?>
+<?php echo $fila["id_usuario"]; ?>
 </td>
 
-<td><?= $row["usuario"] ?></td>
+<td>
+<?php echo $fila["nombres"]." ".$fila["apellidos"]; ?>
+</td>
 
-<td><?= $row["correo"] ?></td>
+<td>
+<?php echo $fila["correo"]; ?>
+</td>
 
-<td><?= $row["rol"] ?></td>
+<td>
+<?php echo $fila["telefono"]; ?>
+</td>
+
+<td>
+<?php echo $fila["rol"]; ?>
+</td>
+
+<td>
+<?php echo $fila["organizacion"]; ?>
+</td>
+
+<td>
+
+<?php if($fila["activo"]==1){ ?>
+
+<span class="badge bg-success">
+Activo
+</span>
+
+<?php }else{ ?>
+
+<span class="badge bg-danger">
+Inactivo
+</span>
+
+<?php } ?>
+
+</td>
 
 <td>
 
 <button
-class="btn btn-danger btn-sm"
-onclick="eliminarUsuario(<?= $row['id_usuario'] ?>)">
+class="btn btn-warning btn-sm btnEditar"
+data-id="<?php echo $fila["id_usuario"]; ?>">
+
+Editar
+
+</button>
+
+<button
+class="btn btn-info btn-sm btnPassword"
+data-id="<?php echo $fila["id_usuario"]; ?>">
+
+Clave
+
+</button>
+
+<button
+class="btn btn-danger btn-sm btnEliminar"
+data-id="<?php echo $fila["id_usuario"]; ?>">
 
 Eliminar
 
 </button>
-
 </td>
 
 </tr>
@@ -80,23 +125,122 @@ Eliminar
 </table>
 
 <script>
+	
+$(".btnEditar").click(function(){
 
-function eliminarUsuario(id){
+	let id=$(this).data("id");
 
-    if(confirm("¿Eliminar usuario?")){
+	$.ajax({
 
-        $.post(
-            "eliminar.php",
-            {id:id},
-            function(){
+	url:"editar.php",
 
-                cargarUsuarios();
+	type:"POST",
 
-            }
-        );
+	data:{
+	id:id
+	},
 
+	success:function(html){
+
+	$("#contenidoEditar")
+	.html(html);
+
+	let modal =
+	new bootstrap.Modal(
+	document.getElementById("modalEditar")
+	);
+
+	modal.show();
+
+	}
+
+	});
+
+	});
+
+	$(".btnEliminar").click(function(){
+
+	let id=$(this).data("id");
+
+	if(!confirm(
+	"¿Desea desactivar este usuario?"
+	)){
+	return;
+	}
+
+	$.ajax({
+
+	url:"eliminar.php",
+
+	type:"POST",
+
+	data:{
+	id:id
+	},
+
+	dataType:"json",
+
+	success:function(r){
+
+	if(r.success){
+
+	cargarUsuarios();
+
+	}else{
+
+	alert(r.message);
+
+	}
+
+	}
+
+	});
+
+});
+	
+$(".btnPassword").click(function(){
+
+    let id = $(this).data("id");
+
+    if(
+        !confirm(
+            "¿Generar una nueva contraseña temporal?"
+        )
+    ){
+        return;
     }
 
-}
+    $.ajax({
+
+        url:"reset_password.php",
+
+        type:"POST",
+
+        data:{
+            id:id
+        },
+
+        dataType:"json",
+
+        success:function(r){
+
+            if(r.success){
+
+                alert(
+                    "Nueva contraseña temporal:\n\n" +
+                    r.password
+                );
+
+            }else{
+
+                alert(r.message);
+
+            }
+
+        }
+
+    });
+
+});
 
 </script>

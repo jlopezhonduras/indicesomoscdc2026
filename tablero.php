@@ -37,7 +37,7 @@ content="width=device-width, initial-scale=1">
 <p>
 Usuario:
 <strong>
-<?php echo $_SESSION["usuario"]; ?>
+<?php echo $_SESSION["correo"]; ?>
 </strong>
 </p>
 
@@ -51,7 +51,7 @@ Nombre:
 <p>
 Rol:
 <strong>
-<?php echo $_SESSION["id_rol"]; ?>
+<?php echo $_SESSION["rol"]; ?>
 </strong>
 </p>
 

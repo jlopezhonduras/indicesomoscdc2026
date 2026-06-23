@@ -3,131 +3,128 @@
 require_once("../../includes/session.php");
 require_once("../../controladores/conexion.php");
 
-header('Content-Type: application/json');
+header("Content-Type: application/json");
 
 try{
 
-    $nombres   = trim($_POST["nombres"] ?? '');
-    $apellidos = trim($_POST["apellidos"] ?? '');
-    $usuario   = trim($_POST["usuario"] ?? '');
-    $correo    = trim($_POST["correo"] ?? '');
-    $password  = trim($_POST["password"] ?? '');
-    $id_rol    = intval($_POST["id_rol"] ?? 0);
+$nombres = trim($_POST["nombres"] ?? '');
+$apellidos = trim($_POST["apellidos"] ?? '');
+$correo = trim($_POST["correo"] ?? '');
+$password = trim($_POST["password"] ?? '');
+$telefono = trim($_POST["telefono"] ?? '');
+$id_rol = intval($_POST["id_rol"] ?? 0);
+$id_organizacion = intval($_POST["id_organizacion"] ?? 0);
+$activo = intval($_POST["activo"] ?? 0);
 
-    if(
-        empty($nombres) ||
-        empty($apellidos) ||
-        empty($usuario) ||
-        empty($password) ||
-        $id_rol == 0
-    ){
+if(
+empty($nombres) ||
+empty($apellidos) ||
+empty($correo) ||
+empty($password) ||
+empty($telefono) ||
+$id_rol <= 0 ||
+$id_organizacion <= 0
+){
 
-        echo json_encode([
-            "success" => false,
-            "message" => "Todos los campos son necesarios."
-        ]);
+echo json_encode([
+"success"=>false,
+"message"=>"Todos los campos son obligatorios."
+]);
 
-        exit;
-    }
+exit;
+}
 
-    $db = new Conexion();
-    $cn = $db->conectar();
+$db = new Conexion();
+$cn = $db->conectar();
 
-    $sql = "SELECT id_usuario
-            FROM usuarios
-            WHERE usuario=?";
+$sql = "
+SELECT id_usuario
+FROM usuarios
+WHERE correo=?
+";
 
-    $stmt = $cn->prepare($sql);
-    $stmt->bind_param("s",$usuario);
-    $stmt->execute();
+$stmt = $cn->prepare($sql);
 
-    $resultado = $stmt->get_result();
+$stmt->bind_param(
+"s",
+$correo
+);
 
-    if($resultado->num_rows > 0){
+$stmt->execute();
 
-        echo json_encode([
-            "success" => false,
-            "message" => "El usuario ya existe."
-        ]);
+$r = $stmt->get_result();
 
-        exit;
-    }
+if($r->num_rows > 0){
 
-    if(!empty($correo)){
+echo json_encode([
+"success"=>false,
+"message"=>"Ya existe un usuario con ese correo."
+]);
 
-        $sql = "SELECT id_usuario
-                FROM usuarios
-                WHERE correo=?";
+exit;
+}
 
-        $stmt = $cn->prepare($sql);
-        $stmt->bind_param("s",$correo);
-        $stmt->execute();
+$password_hash =
+password_hash(
+$password,
+PASSWORD_DEFAULT
+);
 
-        $resultado = $stmt->get_result();
+$usuario = $correo;
 
-        if($resultado->num_rows > 0){
+$sql = "
+INSERT INTO usuarios
+(
+usuario,
+correo,
+nombres,
+apellidos,
+password_hash,
+id_rol,
+id_organizacion,
+telefono,
+activo
+)
+VALUES
+(?,?,?,?,?,?,?,?,?)
+";
 
-            echo json_encode([
-                "success" => false,
-                "message" => "El correo ya existe."
-            ]);
+$stmt = $cn->prepare($sql);
 
-            exit;
-        }
+$stmt->bind_param(
+"sssssiisi",
+$usuario,
+$correo,
+$nombres,
+$apellidos,
+$password_hash,
+$id_rol,
+$id_organizacion,
+$telefono,
+$activo
+);
 
-    }
+if($stmt->execute()){
 
-    $password_hash = password_hash(
-        $password,
-        PASSWORD_DEFAULT
-    );
+echo json_encode([
+"success"=>true,
+"message"=>"Usuario creado correctamente."
+]);
 
-    $sql = "INSERT INTO usuarios
-    (
-        nombres,
-        apellidos,
-        usuario,
-        correo,
-        password_hash,
-        id_rol,
-        activo
-    )
-    VALUES
-    (
-        ?,?,?,?,?,?,1
-    )";
+}else{
 
-    $stmt = $cn->prepare($sql);
+echo json_encode([
+"success"=>false,
+"message"=>"No fue posible guardar."
+]);
 
-    $stmt->bind_param(
-        "sssssi",
-        $nombres,
-        $apellidos,
-        $usuario,
-        $correo,
-        $password_hash,
-        $id_rol
-    );
-
-    if($stmt->execute()){
-
-        echo json_encode([
-            "success" => true,
-            "message" => "Usuario creado correctamente."
-        ]);
-
-    }else{
-
-        echo json_encode([
-            "success" => false,
-            "message" => "No fue posible guardar el usuario."
-        ]);
-    }
+}
 
 }catch(Exception $e){
 
-    echo json_encode([
-        "success" => false,
-        "message" => $e->getMessage()
-    ]);
+echo json_encode([
+"success"=>false,
+"message"=>$e->getMessage()
+]);
+
 }

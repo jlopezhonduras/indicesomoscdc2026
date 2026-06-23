@@ -10,9 +10,10 @@ require_once("../../includes/session.php");
 
 <meta charset="UTF-8">
 
-<title>Usuarios</title>
+<title>Organizaciones</title>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -30,7 +31,9 @@ require_once("../../includes/session.php");
 <div class="row">
 
 <div class="col-md-6">
-<h4>Administración de Usuarios</h4>
+
+<h4>Administración de Organizaciones</h4>
+
 </div>
 
 <div class="col-md-6 text-end">
@@ -40,7 +43,7 @@ class="btn btn-success"
 data-bs-toggle="modal"
 data-bs-target="#modalNuevo">
 
-Nuevo Usuario
+Nueva Organización
 
 </button>
 
@@ -52,7 +55,7 @@ Nuevo Usuario
 
 <div class="card-body">
 
-<div id="tablaUsuarios"></div>
+<div id="tablaOrganizaciones"></div>
 
 </div>
 
@@ -62,21 +65,19 @@ Nuevo Usuario
 
 <?php include("modal_nuevo.php"); ?>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
-function cargarUsuarios(){
+function cargarOrganizaciones(){
 
-    $("#tablaUsuarios").load("listar.php");
+    $("#tablaOrganizaciones").load("tabla.php");
 
 }
 
 $(document).ready(function(){
 
-    cargarUsuarios();
+    cargarOrganizaciones();
 
 });
 

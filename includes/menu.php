@@ -33,7 +33,7 @@ data-bs-target="#navbarPrincipal">
 
     <li class="nav-item dropdown">
 
-       <!-- <a
+       <a
         class="nav-link dropdown-toggle"
         href="#"
         data-bs-toggle="dropdown">
@@ -47,24 +47,37 @@ data-bs-target="#navbarPrincipal">
             <li>
                 <a
                 class="dropdown-item"
-                href="/indicesomos/modulos/usuarios/index.php">
+                href="/IndiceSOMOS/modulos/usuarios/index.php">
 
                 Usuarios
 
                 </a>
             </li>
+			
+			<li>
+				<a
+				class="dropdown-item"
+				href="/IndiceSOMOS/modulos/perfil/">
 
-            <!--<li>
-                <a
-                class="dropdown-item"
-                href="#">
+				Mi Perfil
 
-                Roles
+				</a>
 
-                </a>
-            </li>
+				</li>
 
-        </ul>-->
+            <li class="nav-item">
+
+				<a
+				class="dropdown-item"
+				href="/IndiceSOMOS/modulos/organizaciones/index.php">
+
+					Organizaciones
+
+				</a>
+
+			</li>
+
+        </ul>
 
     </li>
 

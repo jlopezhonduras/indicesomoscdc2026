@@ -43,15 +43,14 @@ if(isset($_SESSION["id_usuario"])){
 
 <div class="mb-3">
 
-<label>Usuario</label>
+
+<label>Correo electrónico</label>
 
 <input
-type="text"
-name="usuario"
+type="email"
+name="correo"
 class="form-control"
 required>
-
-</div>
 
 <div class="mb-3">
 

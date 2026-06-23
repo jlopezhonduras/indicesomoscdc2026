@@ -1,296 +1,258 @@
-<div class="modal fade" id="modalNuevo" tabindex="-1" aria-hidden="true">
+<?php
 
-    <div class="modal-dialog">
+require_once("../../controladores/conexion.php");
 
-        <div class="modal-content">
+$db = new Conexion();
+$cn = $db->conectar();
 
-            <div class="modal-header">
+$roles = $cn->query("
+SELECT id_rol,nombre
+FROM roles
+WHERE activo=1
+ORDER BY nombre
+");
 
-                <h5 class="modal-title">
-                    Nuevo Usuario
-                </h5>
+$organizaciones = $cn->query("
+SELECT id_organizacion,nombre
+FROM organizaciones
+WHERE activa=1
+ORDER BY nombre
+");
+?>
 
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    onclick="limpiarFormularioUsuario();">
-                </button>
+<div class="modal fade" id="modalNuevo" tabindex="-1">
 
-            </div>
+<div class="modal-dialog modal-lg">
 
-            <div class="modal-body">
+<div class="modal-content">
 
-                <div id="mensajeUsuario"></div>
+<div class="modal-header">
 
-                <form id="frmUsuario">
+<h5 class="modal-title">
+Nuevo Usuario
+</h5>
 
-                    <div class="mb-3">
+<button
+type="button"
+class="btn-close"
+data-bs-dismiss="modal"> </button>
 
-                        <label class="form-label">
-                            Nombres
-                        </label>
+</div>
 
-                        <input
-                            type="text"
-                            name="nombres"
-                            class="form-control">
+<div class="modal-body">
 
-                    </div>
+<div id="mensajeUsuario"></div>
 
-                    <div class="mb-3">
+<form id="frmUsuario">
 
-                        <label class="form-label">
-                            Apellidos
-                        </label>
+<div class="row">
 
-                        <input
-                            type="text"
-                            name="apellidos"
-                            class="form-control">
+<div class="col-md-6 mb-3">
 
-                    </div>
+<label>Nombres *</label>
 
-                    <div class="mb-3">
+<input
+type="text"
+name="nombres"
+class="form-control"
+required>
 
-                        <label class="form-label">
-                            Usuario
-                        </label>
+</div>
 
-                        <input
-                            type="text"
-                            name="usuario"
-                            class="form-control">
+<div class="col-md-6 mb-3">
 
-                    </div>
+<label>Apellidos *</label>
 
-                    <div class="mb-3">
+<input
+type="text"
+name="apellidos"
+class="form-control"
+required>
 
-                        <label class="form-label">
-                            Correo Electrónico
-                        </label>
+</div>
 
-                        <input
-                            type="email"
-                            name="correo"
-                            class="form-control">
+</div>
 
-                    </div>
+<div class="row">
 
-                    <div class="mb-3">
+<div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Contraseña
-                        </label>
+<label>Correo Electrónico *</label>
 
-                        <input
-                            type="password"
-                            name="password"
-                            class="form-control">
+<input
+type="email"
+name="correo"
+class="form-control"
+required>
 
-                    </div>
+</div>
 
-                    <div class="mb-3">
+<div class="col-md-6 mb-3">
 
-                        <label class="form-label">
-                            Rol
-                        </label>
+<label>Teléfono *</label>
 
-                        <select
-                            name="id_rol"
-                            class="form-select">
+<input
+type="text"
+name="telefono"
+class="form-control"
+required>
 
-                            <option value="">
-                                Seleccione...
-                            </option>
+</div>
 
-                            <option value="1">
-                                Administrador
-                            </option>
+</div>
 
-                            <option value="2">
-                                Recolector
-                            </option>
+<div class="row">
 
-                            <option value="3">
-                                Consulta
-                            </option>
+<div class="col-md-6 mb-3">
 
-                            <option value="4">
-                                Descarga
-                            </option>
+<label>Contraseña *</label>
 
-                        </select>
+<input
+type="password"
+name="password"
+class="form-control"
+required>
 
-                    </div>
+</div>
 
-                </form>
+<div class="col-md-6 mb-3">
 
-            </div>
+<label>Rol *</label>
 
-            <div class="modal-footer">
+<select
+name="id_rol"
+class="form-select"
+required>
 
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                    onclick="limpiarFormularioUsuario();">
+<option value="">
+Seleccione...
+</option>
 
-                    Cancelar
+<?php while($r = $roles->fetch_assoc()){ ?>
 
-                </button>
+<option value="<?php echo $r["id_rol"]; ?>">
+<?php echo $r["nombre"]; ?>
+</option>
 
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    id="btnGuardar">
+<?php } ?>
 
-                    Guardar
+</select>
 
-                </button>
+</div>
 
-            </div>
+</div>
 
-        </div>
+<div class="row">
 
-    </div>
+<div class="col-md-6 mb-3">
+
+<label>Organización *</label>
+
+<select
+name="id_organizacion"
+class="form-select"
+required>
+
+<option value="">
+Seleccione...
+</option>
+
+<?php while($o = $organizaciones->fetch_assoc()){ ?>
+
+<option value="<?php echo $o["id_organizacion"]; ?>">
+<?php echo $o["nombre"]; ?>
+</option>
+
+<?php } ?>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Estado *</label>
+
+<select
+name="activo"
+class="form-select"
+required>
+
+<option value="1">
+Activo
+</option>
+
+<option value="0">
+Inactivo
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button
+type="submit"
+class="btn btn-primary">
+
+Guardar
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 <script>
 
-function limpiarFormularioUsuario(){
+$("#frmUsuario").submit(function(e){
 
-    document.getElementById("frmUsuario").reset();
+e.preventDefault();
 
-    $("#mensajeUsuario").html("");
+$.ajax({
 
-    $("#frmUsuario input").removeClass("is-invalid");
+url:"guardar.php",
 
-    $("#frmUsuario select").removeClass("is-invalid");
+type:"POST",
+
+data:$(this).serialize(),
+
+dataType:"json",
+
+success:function(r){
+
+if(r.success){
+
+$("#mensajeUsuario").html(
+'<div class="alert alert-success">'+
+r.message+
+'</div>'
+);
+
+$("#frmUsuario")[0].reset();
+
+cargarUsuarios();
+
+}else{
+
+$("#mensajeUsuario").html(
+'<div class="alert alert-danger">'+
+r.message+
+'</div>'
+);
 
 }
 
-document
-.getElementById('modalNuevo')
-.addEventListener('show.bs.modal', function () {
-
-    limpiarFormularioUsuario();
+}
 
 });
-
-$(document).on('click','#btnGuardar',function(){
-
-    $("#mensajeUsuario").html("");
-
-    $("#frmUsuario input").removeClass("is-invalid");
-
-    $("#frmUsuario select").removeClass("is-invalid");
-
-    let nombres   = $("input[name='nombres']").val().trim();
-    let apellidos = $("input[name='apellidos']").val().trim();
-    let usuario   = $("input[name='usuario']").val().trim();
-    let password  = $("input[name='password']").val().trim();
-    let id_rol    = $("select[name='id_rol']").val();
-
-    let error = false;
-
-    if(nombres == ""){
-        $("input[name='nombres']").addClass("is-invalid");
-        error = true;
-    }
-
-    if(apellidos == ""){
-        $("input[name='apellidos']").addClass("is-invalid");
-        error = true;
-    }
-
-    if(usuario == ""){
-        $("input[name='usuario']").addClass("is-invalid");
-        error = true;
-    }
-
-    if(password == ""){
-        $("input[name='password']").addClass("is-invalid");
-        error = true;
-    }
-
-    if(id_rol == ""){
-        $("select[name='id_rol']").addClass("is-invalid");
-        error = true;
-    }
-
-    if(error){
-
-        $("#mensajeUsuario").html(
-            '<div class="alert alert-danger">'+
-            'Todos los campos son necesarios.'+
-            '</div>'
-        );
-
-        return;
-
-    }
-
-    $.ajax({
-
-        url:'guardar.php',
-
-        type:'POST',
-
-        data:$("#frmUsuario").serialize(),
-
-        dataType:'json',
-
-        success:function(r){
-
-            if(r.success){
-
-                $("#mensajeUsuario").html(
-                    '<div class="alert alert-success">'+
-                    r.message+
-                    '</div>'
-                );
-
-                setTimeout(function(){
-
-                    limpiarFormularioUsuario();
-
-                    const modal =
-                        bootstrap.Modal.getInstance(
-                            document.getElementById('modalNuevo')
-                        );
-
-                    modal.hide();
-
-                    cargarUsuarios();
-
-                },1000);
-
-            }
-            else{
-
-                $("#mensajeUsuario").html(
-                    '<div class="alert alert-danger">'+
-                    r.message+
-                    '</div>'
-                );
-
-            }
-
-        },
-
-        error:function(){
-
-            $("#mensajeUsuario").html(
-                '<div class="alert alert-danger">'+
-                'Error al comunicarse con el servidor.'+
-                '</div>'
-            );
-
-        }
-
-    });
 
 });
 
