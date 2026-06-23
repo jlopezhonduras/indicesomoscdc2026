@@ -33,7 +33,7 @@ data-bs-target="#navbarPrincipal">
 
     <li class="nav-item dropdown">
 
-        <a
+       <!-- <a
         class="nav-link dropdown-toggle"
         href="#"
         data-bs-toggle="dropdown">
@@ -62,9 +62,9 @@ data-bs-target="#navbarPrincipal">
                 Roles
 
                 </a>
-            </li>-->
+            </li>
 
-        </ul>
+        </ul>-->
 
     </li>
 
@@ -72,7 +72,7 @@ data-bs-target="#navbarPrincipal">
 
     <li class="nav-item dropdown">
 
-        <a
+       <!-- <a
         class="nav-link dropdown-toggle"
         href="#"
         data-bs-toggle="dropdown">
@@ -142,7 +142,7 @@ data-bs-target="#navbarPrincipal">
             </a>
         </li>
 
-        <li>
+     <!--   <li>
             <a
             class="dropdown-item"
             href="/indicesomos/modulos/encuestas/index.php">
@@ -150,7 +150,7 @@ data-bs-target="#navbarPrincipal">
             Listado de Encuestas
 
             </a>
-        </li>
+        </li>-->
 
     </ul>
 
@@ -160,7 +160,7 @@ data-bs-target="#navbarPrincipal">
 
     <li class="nav-item dropdown">
 
-        <a
+        <!--<a
         class="nav-link dropdown-toggle"
         href="#"
         data-bs-toggle="dropdown">
@@ -211,7 +211,7 @@ data-bs-target="#navbarPrincipal">
                 </a>
             </li>
 
-        </ul>
+        </ul>-->
 
     </li>
 

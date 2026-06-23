@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2026 a las 13:00:03
+-- Tiempo de generación: 22-06-2026 a las 19:30:09
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -144,30 +144,220 @@ CREATE TABLE `opciones_pregunta` (
 --
 
 INSERT INTO `opciones_pregunta` (`id_opcion`, `id_pregunta`, `valor`, `etiqueta`, `orden`) VALUES
-(1, 76, 'SI', 'Sí', 1),
-(2, 76, 'NO', 'No', 2),
-(3, 76, 'NS', 'No sabe', 3),
-(4, 76, 'NR', 'No quiere responder', 4),
-(5, 76, 'NA', 'No aplica', 5),
-(8, 84, 'SI', 'Sí', 1),
-(9, 84, 'NO', 'No', 2),
-(10, 84, 'NS', 'No sabe', 3),
-(11, 84, 'NR', 'No quiere responder', 4),
-(12, 84, 'NA', 'No aplica', 5);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `opciones_respuesta`
---
-
-CREATE TABLE `opciones_respuesta` (
-  `id_opcion` bigint(20) NOT NULL,
-  `id_pregunta` bigint(20) NOT NULL,
-  `valor` varchar(100) DEFAULT NULL,
-  `etiqueta` varchar(255) DEFAULT NULL,
-  `orden` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(14, 78, 'M', 'Masculino', 1),
+(15, 78, 'F', 'Femenino', 2),
+(16, 78, 'I', 'Intersexual', 3),
+(17, 78, 'NS', 'No sabe', 4),
+(18, 78, 'NR', 'No quiere responder', 5),
+(19, 78, 'NA', 'No aplica', 6),
+(20, 76, 'Sí', 'Sí', 1),
+(21, 76, 'No', 'No', 2),
+(22, 80, 'Asexual', 'Asexual', 1),
+(23, 80, 'Bisexual', 'Bisexual', 2),
+(24, 80, 'Gay', 'Gay', 3),
+(25, 80, 'Heterosexual', 'Heterosexual', 4),
+(26, 80, 'Lesbiana', 'Lesbiana', 5),
+(27, 80, 'Otro', 'Otro', 6),
+(28, 80, 'Pansexual', 'Pansexual', 7),
+(29, 81, 'Hombre Cis', 'Hombre Cis', 1),
+(30, 81, 'Hombre trans', 'Hombre trans', 2),
+(31, 81, 'Mujer Cis', 'Mujer Cis', 3),
+(32, 81, 'Mujer trans', 'Mujer trans', 4),
+(33, 81, 'No binario', 'No binario', 5),
+(34, 81, 'Otro', 'Otro', 6),
+(35, 81, 'Queer', 'Queer', 7),
+(36, 81, 'Se desconoce', 'Se desconoce', 8),
+(37, 82, 'Atlántida', 'Atlántida', 1),
+(38, 82, 'Choluteca', 'Choluteca', 2),
+(39, 82, 'Colón', 'Colón', 3),
+(40, 82, 'Comayagua', 'Comayagua', 4),
+(41, 82, 'Copán', 'Copán', 5),
+(42, 82, 'Cortés', 'Cortés', 6),
+(43, 82, 'El Paraíso', 'El Paraíso', 7),
+(44, 82, 'Francisco Morazán', 'Francisco Morazán', 8),
+(45, 82, 'Gracias a Dios', 'Gracias a Dios', 9),
+(46, 82, 'Intibucá', 'Intibucá', 10),
+(47, 82, 'Islas de la Bahía', 'Islas de la Bahía', 11),
+(48, 82, 'La Paz', 'La Paz', 12),
+(49, 82, 'Lempira', 'Lempira', 13),
+(50, 82, 'Ocotepeque', 'Ocotepeque', 14),
+(51, 82, 'Olancho', 'Olancho', 15),
+(52, 82, 'Santa Bárbara', 'Santa Bárbara', 16),
+(53, 82, 'Valle', 'Valle', 17),
+(54, 82, 'Yoro', 'Yoro', 18),
+(55, 99, 'Sí', 'Sí', 1),
+(56, 99, 'No', 'No', 2),
+(57, 83, 'Pos-Grado', 'Pos-Grado', 1),
+(58, 83, 'Primaria', 'Primaria', 2),
+(59, 83, 'Secudaria', 'Secudaria', 3),
+(60, 83, 'Superior (universitaria)', 'Superior (universitaria)', 4),
+(61, 84, 'Sí', 'Sí', 1),
+(62, 84, 'No', 'No', 2),
+(63, 85, 'Formal', 'Formal', 1),
+(64, 85, 'Ambos', 'Ambos', 2),
+(65, 85, 'No Formal', 'No Formal', 3),
+(66, 88, 'Sí', 'Sí', 1),
+(67, 88, 'No', 'No', 2),
+(68, 90, 'Acoso sexual', 'Acoso sexual', 1),
+(69, 90, 'Bullying', 'Bullying', 2),
+(70, 90, 'Comentarios LGTBIfóbicos', 'Comentarios LGTBIfóbicos', 3),
+(71, 90, 'Discriminación', 'Discriminación', 4),
+(72, 90, 'Exclusión', 'Exclusión', 5),
+(73, 90, 'Irrespeto a la identidad de género', 'Irrespeto a la identidad de género', 6),
+(74, 90, 'Otros', 'Otros', 7),
+(75, 90, 'Violencia física', 'Violencia física', 8),
+(76, 91, 'Sí', 'Sí', 1),
+(77, 91, 'No', 'No', 2),
+(78, 92, 'Acuerdo o conciliación', 'Acuerdo o conciliación', 1),
+(79, 92, 'Denuncia sin resultado', 'Denuncia sin resultado', 2),
+(80, 92, 'Denuncia validada', 'Denuncia validada', 3),
+(81, 92, 'En proceso', 'En proceso', 4),
+(82, 92, 'Medidas de protección', 'Medidas de protección', 5),
+(83, 92, 'Ninguna respuesta', 'Ninguna respuesta', 6),
+(84, 92, 'Regular / Parcial', 'Regular / Parcial', 7),
+(85, 92, 'Resolución favorable', 'Resolución favorable', 8),
+(86, 92, 'Sin seguimiento institucional', 'Sin seguimiento institucional', 9),
+(87, 94, 'Sí', 'Sí', 1),
+(88, 94, 'No', 'No', 2),
+(89, 96, 'Sí', 'Sí', 1),
+(90, 96, 'No', 'No', 2),
+(91, 96, 'Tal vez', 'Tal vez', 3),
+(92, 98, '3', 'Moderadamente Aceptada', 5),
+(93, 98, '4', 'Muy Aceptada', 2),
+(94, 98, '5', 'Totalmente Aceptada', 1),
+(97, 101, 'Sí', 'Sí', 1),
+(98, 101, 'No', 'No', 2),
+(99, 103, 'Sí', 'Sí', 1),
+(100, 103, 'No', 'No', 2),
+(101, 104, 'Sí', 'Sí', 1),
+(102, 104, 'No', 'No', 2),
+(103, 106, 'Sí', 'Sí', 1),
+(104, 106, 'No', 'No', 2),
+(105, 108, 'Sí', 'Sí', 1),
+(106, 108, 'No', 'No', 2),
+(107, 110, 'Sí', 'Sí', 1),
+(108, 110, 'No', 'No', 2),
+(109, 112, 'Sí', 'Sí', 1),
+(110, 112, 'No', 'No', 2),
+(111, 112, 'Prefiero no decirlo', 'Prefiero no decirlo', 3),
+(112, 113, 'Sí', 'Sí', 1),
+(113, 113, 'No', 'No', 2),
+(114, 113, 'No sé qué es atención médica reproductiva', 'No sé qué es atención médica reproductiva', 3),
+(115, 114, 'Sí', 'Sí', 1),
+(116, 114, 'No', 'No', 2),
+(117, 116, 'Sí', 'Sí', 1),
+(118, 116, 'No', 'No', 2),
+(119, 119, 'Sí', 'Sí', 1),
+(120, 119, 'No', 'No', 2),
+(121, 120, '3', 'Regular', 3),
+(122, 120, '2', 'Mala', 4),
+(123, 120, '4', 'Buena', 2),
+(124, 121, 'Sí', 'Sí', 1),
+(125, 121, 'No', 'No', 2),
+(126, 123, '2', 'Poco', 4),
+(127, 123, '1', 'Nada', 5),
+(128, 123, '3', 'Regular', 3),
+(129, 123, '4', 'Mucha', 2),
+(130, 124, 'Sí', 'Sí', 1),
+(131, 124, 'No', 'No', 2),
+(132, 124, 'Prefiero no decirlo', 'Prefiero no decirlo', 3),
+(133, 126, 'Sí', 'Sí', 1),
+(134, 126, 'No', 'No', 2),
+(135, 80, 'NS', 'No sabe', 100),
+(136, 81, 'NS', 'No sabe', 100),
+(137, 82, 'NS', 'No sabe', 100),
+(138, 99, 'NS', 'No sabe', 100),
+(139, 83, 'NS', 'No sabe', 100),
+(140, 84, 'NS', 'No sabe', 100),
+(141, 85, 'NS', 'No sabe', 100),
+(142, 88, 'NS', 'No sabe', 100),
+(143, 90, 'NS', 'No sabe', 100),
+(144, 91, 'NS', 'No sabe', 100),
+(145, 92, 'NS', 'No sabe', 100),
+(146, 94, 'NS', 'No sabe', 100),
+(147, 96, 'NS', 'No sabe', 100),
+(148, 98, 'NS', 'No sabe', 100),
+(149, 101, 'NS', 'No sabe', 100),
+(150, 103, 'NS', 'No sabe', 100),
+(151, 104, 'NS', 'No sabe', 100),
+(152, 106, 'NS', 'No sabe', 100),
+(153, 108, 'NS', 'No sabe', 100),
+(154, 110, 'NS', 'No sabe', 100),
+(155, 112, 'NS', 'No sabe', 100),
+(156, 113, 'NS', 'No sabe', 100),
+(157, 114, 'NS', 'No sabe', 100),
+(158, 116, 'NS', 'No sabe', 100),
+(159, 119, 'NS', 'No sabe', 100),
+(160, 120, 'NS', 'No sabe', 100),
+(161, 121, 'NS', 'No sabe', 100),
+(162, 123, 'NS', 'No sabe', 100),
+(163, 124, 'NS', 'No sabe', 100),
+(164, 126, 'NS', 'No sabe', 100),
+(165, 80, 'NR', 'No quiere responder', 101),
+(166, 81, 'NR', 'No quiere responder', 101),
+(167, 82, 'NR', 'No quiere responder', 101),
+(168, 99, 'NR', 'No quiere responder', 101),
+(169, 83, 'NR', 'No quiere responder', 101),
+(170, 84, 'NR', 'No quiere responder', 101),
+(171, 85, 'NR', 'No quiere responder', 101),
+(172, 88, 'NR', 'No quiere responder', 101),
+(173, 90, 'NR', 'No quiere responder', 101),
+(174, 91, 'NR', 'No quiere responder', 101),
+(175, 92, 'NR', 'No quiere responder', 101),
+(176, 94, 'NR', 'No quiere responder', 101),
+(177, 96, 'NR', 'No quiere responder', 101),
+(178, 98, 'NR', 'No quiere responder', 101),
+(179, 101, 'NR', 'No quiere responder', 101),
+(180, 103, 'NR', 'No quiere responder', 101),
+(181, 104, 'NR', 'No quiere responder', 101),
+(182, 106, 'NR', 'No quiere responder', 101),
+(183, 108, 'NR', 'No quiere responder', 101),
+(184, 110, 'NR', 'No quiere responder', 101),
+(185, 112, 'NR', 'No quiere responder', 101),
+(186, 113, 'NR', 'No quiere responder', 101),
+(187, 114, 'NR', 'No quiere responder', 101),
+(188, 116, 'NR', 'No quiere responder', 101),
+(189, 119, 'NR', 'No quiere responder', 101),
+(190, 120, 'NR', 'No quiere responder', 101),
+(191, 121, 'NR', 'No quiere responder', 101),
+(192, 123, 'NR', 'No quiere responder', 101),
+(193, 124, 'NR', 'No quiere responder', 101),
+(194, 126, 'NR', 'No quiere responder', 101),
+(195, 80, 'NA', 'No aplica', 102),
+(196, 81, 'NA', 'No aplica', 102),
+(197, 82, 'NA', 'No aplica', 102),
+(198, 99, 'NA', 'No aplica', 102),
+(199, 83, 'NA', 'No aplica', 102),
+(200, 84, 'NA', 'No aplica', 102),
+(201, 85, 'NA', 'No aplica', 102),
+(202, 88, 'NA', 'No aplica', 102),
+(203, 90, 'NA', 'No aplica', 102),
+(204, 91, 'NA', 'No aplica', 102),
+(205, 92, 'NA', 'No aplica', 102),
+(206, 94, 'NA', 'No aplica', 102),
+(207, 96, 'NA', 'No aplica', 102),
+(208, 98, 'NA', 'No aplica', 102),
+(209, 101, 'NA', 'No aplica', 102),
+(210, 103, 'NA', 'No aplica', 102),
+(211, 104, 'NA', 'No aplica', 102),
+(212, 106, 'NA', 'No aplica', 102),
+(213, 108, 'NA', 'No aplica', 102),
+(214, 110, 'NA', 'No aplica', 102),
+(215, 112, 'NA', 'No aplica', 102),
+(216, 113, 'NA', 'No aplica', 102),
+(217, 114, 'NA', 'No aplica', 102),
+(218, 116, 'NA', 'No aplica', 102),
+(219, 119, 'NA', 'No aplica', 102),
+(220, 120, 'NA', 'No aplica', 102),
+(221, 121, 'NA', 'No aplica', 102),
+(222, 123, 'NA', 'No aplica', 102),
+(223, 124, 'NA', 'No aplica', 102),
+(224, 126, 'NA', 'No aplica', 102),
+(225, 123, '5', 'Totalmente', 1),
+(226, 120, '5', 'Muy Buena', 1),
+(227, 120, '1', 'Muy Mala', 5),
+(232, 98, '1', 'Nada Aceptada', 4),
+(233, 98, '2', 'Poco Aceptada', 3);
 
 -- --------------------------------------------------------
 
@@ -201,19 +391,19 @@ INSERT INTO `preguntas` (`id_pregunta`, `id_seccion`, `pregunta`, `tipo`, `oblig
 (83, 34, '¿Cuál fue el último nivel de educación formal que completó?', 'select', 1, 8, 1, NULL),
 (84, 34, '¿Se encuentra estudiando actualmente?', 'select', 1, 9, 1, NULL),
 (85, 34, '¿Estudia en el sistema de educación formal o educación no formal?', 'select', 1, 10, 1, NULL),
-(86, 34, '¿Qué grado de estudio formal se encuentra cursando actualmente?', 'number', 1, 11, 1, NULL),
+(86, 34, '¿Qué grado de estudio formal se encuentra cursando actualmente?', 'textarea', 1, 11, 1, NULL),
 (87, 34, '¿Mencione la disciplina, profesión u oficio que está estudiando?', 'textarea', 1, 12, 1, NULL),
 (88, 34, '¿Ha enfrentado acoso, discriminación o violencia en el sistema educativo formal?', 'select', 1, 13, 1, NULL),
 (89, 34, '¿Qué tipo de acoso, discriminación o violencia ha enfrentado en el sistema educativo?', 'textarea', 1, 14, 1, NULL),
 (90, 34, 'El acoso, discriminación o violencia ha sido por parte de:', 'checkbox', 1, 15, 1, NULL),
 (91, 34, '¿Tuvo la oportunidad de denunciar el acoso o discriminación vivido?', 'select', 1, 16, 1, NULL),
-(92, 34, '¿Cuál fue el resultado de su denuncia?', 'textarea', 1, 17, 1, NULL),
+(92, 34, '¿Cuál fue el resultado de su denuncia?', 'select', 1, 17, 1, NULL),
 (93, 34, '¿Por qué no lo hizo?', 'textarea', 1, 18, 1, NULL),
 (94, 35, '¿Votó en las últimas elecciones primarias o generales?', 'select', 1, 19, 1, NULL),
 (95, 35, '¿Por qué no votó?', 'textarea', 1, 20, 1, NULL),
 (96, 35, '¿Va a votar en las próximas elecciones?', 'select', 1, 21, 1, NULL),
 (97, 35, '¿Por qué sí o por qué no?', 'textarea', 1, 22, 1, NULL),
-(98, 35, 'Como persona LGTBIQ+ ¿se siente aceptada por la sociedad hondureña?', 'likert', 1, 23, 1, NULL),
+(98, 35, 'Como persona LGTBIQ+ ¿se siente aceptada por la sociedad hondureña?', 'select', 1, 23, 1, NULL),
 (99, 36, '¿Cuenta actualmente con un trabajo?', 'select', 1, 24, 1, NULL),
 (100, 36, '¿Cuál es su trabajo?', 'textarea', 1, 25, 1, NULL),
 (101, 36, '¿Ha sufrido discriminación en el empleo?', 'select', 1, 26, 1, NULL),
@@ -235,28 +425,19 @@ INSERT INTO `preguntas` (`id_pregunta`, `id_seccion`, `pregunta`, `tipo`, `oblig
 (117, 38, '¿Dónde recibió esa atención?', 'textarea', 1, 42, 1, NULL),
 (118, 38, '¿Por qué no ha recibido esta asistencia?', 'textarea', 1, 43, 1, NULL),
 (119, 38, '¿Ha padecido algún cuadro de depresión en los últimos 12 meses?', 'select', 1, 44, 1, NULL),
-(120, 38, 'En general ¿Cómo se encuentra su salud?', 'likert', 1, 45, 1, NULL),
+(120, 38, 'En general ¿Cómo se encuentra su salud?', 'select', 1, 45, 1, NULL),
 (121, 39, '¿Ha sido víctima de violencia basada en su orientación sexual, identidad o expresión de género en los últimos 12 meses?', 'select', 1, 46, 1, NULL),
 (122, 39, '¿Qué tipo de violencia ha enfrentado?', 'textarea', 1, 47, 1, NULL),
 (123, 39, '¿Qué tanto confía en que el sistema judicial hondureño ante la violencia que viven las personas LGTBIQ+?', 'likert', 1, 48, 1, NULL),
 (124, 39, '¿Ha sido detenido/a en alguna ocasión por las fuerzas de seguridad?', 'select', 1, 49, 1, NULL),
 (125, 39, '¿Cuál fue la causa de dicha detención?', 'textarea', 1, 50, 1, NULL),
 (126, 39, 'Durante su detención ¿Fue víctima de discriminación o violencia?', 'select', 1, 51, 1, NULL),
-(127, 39, '¿Qué tipo de violencia o discriminación sufrió durante su detención?', 'textarea', 1, 52, 1, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `respuestas`
---
-
-CREATE TABLE `respuestas` (
-  `id_respuesta` bigint(20) NOT NULL,
-  `id_encuesta` bigint(20) NOT NULL,
-  `id_pregunta` bigint(20) NOT NULL,
-  `respuesta_texto` longtext DEFAULT NULL,
-  `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(127, 39, '¿Qué tipo de violencia o discriminación sufrió durante su detención?', 'textarea', 1, 52, 1, NULL),
+(133, 41, '¿Ha tenido que cambiar de lugar de residencia dentro de Honduras debido a discriminación, violencia o amenazas relacionadas con su orientación sexual, identidad o expresión de género?', 'select', 1, 1, 1, 'MIGRACION'),
+(134, 41, '¿Ha migrado fuera de Honduras debido a discriminación, violencia o amenazas relacionadas con su orientación sexual, identidad o expresión de género?', 'select', 1, 2, 1, 'MIGRACION'),
+(135, 41, '¿Ha considerado migrar o abandonar su lugar de residencia por motivos relacionados con su orientación sexual, identidad o expresión de género?', 'select', 1, 3, 1, 'MIGRACION'),
+(136, 41, '¿Cuál fue la principal razón para considerar o realizar esta migración o desplazamiento?', 'textarea', 1, 4, 1, 'MIGRACION'),
+(137, 41, '¿La migración o desplazamiento mejoró sus condiciones de vida y seguridad?', 'likert', 1, 5, 1, 'MIGRACION');
 
 -- --------------------------------------------------------
 
@@ -307,7 +488,8 @@ INSERT INTO `secciones` (`id_seccion`, `id_formulario`, `nombre`, `orden`) VALUE
 (37, 1, 'Salud', 5),
 (38, 1, 'Salud Mental', 6),
 (39, 1, 'Violencia y Justicia', 7),
-(40, 1, 'Resumen', 8);
+(40, 1, 'Resumen', 9),
+(41, 1, 'Migración y Desplazamiento Forzado', 8);
 
 -- --------------------------------------------------------
 
@@ -350,7 +532,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `usuario`, `correo`, `nombres`, `apellidos`, `password_hash`, `id_rol`, `ultimo_acceso`, `activo`, `fecha_creacion`, `creado_por`) VALUES
 (1, 'admin', 'admin@indicesomos.org', 'Administrador', 'Sistema', '$2a$12$LF.UZUNV4DYgMun9gr59b.LGzM48EW/Ztj/jrr5SmRed4Az0lZfWe', 1, NULL, 1, '2026-06-18 15:10:35', NULL),
-(2, 'jlopez', 'jalf2001@hotmail.com', 'Jorge', 'Lopez', '$2y$10$LHPnzbtozomLhNe61UCiM.UT/KmL/UMrYJQ7RMCB/EGRKc8oBikbe', 2, NULL, 1, '2026-06-18 20:01:12', NULL);
+(2, 'jlopez', 'jalf2001@hotmail.com', 'Jorge', 'Lopez', '$2y$10$LHPnzbtozomLhNe61UCiM.UT/KmL/UMrYJQ7RMCB/EGRKc8oBikbe', 2, NULL, 1, '2026-06-18 20:01:12', NULL),
+(4, 'somos', 'somos@somos.com', 'SOMOS', 'CDC', '$2y$10$4buSkPVD4tt9nNhpTHa//O4pTN7S4idpGHvljaJUVN4AZAVydRjqG', 2, NULL, 1, '2026-06-22 17:17:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -412,26 +595,11 @@ ALTER TABLE `opciones_pregunta`
   ADD KEY `id_pregunta` (`id_pregunta`);
 
 --
--- Indices de la tabla `opciones_respuesta`
---
-ALTER TABLE `opciones_respuesta`
-  ADD PRIMARY KEY (`id_opcion`),
-  ADD KEY `id_pregunta` (`id_pregunta`);
-
---
 -- Indices de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
   ADD PRIMARY KEY (`id_pregunta`),
   ADD KEY `idx_pregunta_seccion` (`id_seccion`);
-
---
--- Indices de la tabla `respuestas`
---
-ALTER TABLE `respuestas`
-  ADD PRIMARY KEY (`id_respuesta`),
-  ADD KEY `idx_respuesta_encuesta` (`id_encuesta`),
-  ADD KEY `idx_respuesta_pregunta` (`id_pregunta`);
 
 --
 -- Indices de la tabla `roles`
@@ -510,25 +678,13 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `opciones_pregunta`
 --
 ALTER TABLE `opciones_pregunta`
-  MODIFY `id_opcion` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT de la tabla `opciones_respuesta`
---
-ALTER TABLE `opciones_respuesta`
-  MODIFY `id_opcion` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_opcion` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `id_pregunta` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
-
---
--- AUTO_INCREMENT de la tabla `respuestas`
---
-ALTER TABLE `respuestas`
-  MODIFY `id_respuesta` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pregunta` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -540,7 +696,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `sesiones`
@@ -552,7 +708,7 @@ ALTER TABLE `sesiones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_formulario`
@@ -590,23 +746,10 @@ ALTER TABLE `opciones_pregunta`
   ADD CONSTRAINT `opciones_pregunta_ibfk_1` FOREIGN KEY (`id_pregunta`) REFERENCES `preguntas` (`id_pregunta`);
 
 --
--- Filtros para la tabla `opciones_respuesta`
---
-ALTER TABLE `opciones_respuesta`
-  ADD CONSTRAINT `opciones_respuesta_ibfk_1` FOREIGN KEY (`id_pregunta`) REFERENCES `preguntas` (`id_pregunta`);
-
---
 -- Filtros para la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
   ADD CONSTRAINT `preguntas_ibfk_1` FOREIGN KEY (`id_seccion`) REFERENCES `secciones` (`id_seccion`);
-
---
--- Filtros para la tabla `respuestas`
---
-ALTER TABLE `respuestas`
-  ADD CONSTRAINT `respuestas_ibfk_1` FOREIGN KEY (`id_encuesta`) REFERENCES `encuestas` (`id_encuesta`),
-  ADD CONSTRAINT `respuestas_ibfk_2` FOREIGN KEY (`id_pregunta`) REFERENCES `preguntas` (`id_pregunta`);
 
 --
 -- Filtros para la tabla `secciones`
