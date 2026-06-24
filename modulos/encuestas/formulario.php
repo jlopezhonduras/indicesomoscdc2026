@@ -483,12 +483,9 @@ Siguiente
 
 </div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	
 <script>
 
 let pasoActual = 1;
@@ -629,13 +626,88 @@ $("#btnSiguiente").click(function(){
 
     }else{
 
-        Swal.fire({
-            icon:'success',
-            title:'Encuesta completa',
-            text:'Todas las secciones han sido respondidas.'
-        });
+    $.ajax({
 
-    }
+        url:'guardar_encuesta.php',
+
+        type:'POST',
+
+        data:$("#frmEncuesta").serialize(),
+
+        dataType:'json',
+
+        beforeSend:function(){
+
+            Swal.fire({
+
+                title:'Guardando encuesta...',
+                text:'Por favor espere',
+                allowOutsideClick:false,
+
+                didOpen:()=>{
+
+                    Swal.showLoading();
+
+                }
+
+            });
+
+        },
+
+        success:function(r){
+
+            if(r.success){
+
+                Swal.fire({
+
+                    icon:'success',
+
+                    title:'Encuesta guardada',
+
+                    text:r.message
+
+                }).then(()=>{
+
+                    window.location.href =
+                    '../../tablero.php';
+
+                });
+
+            }else{
+
+                Swal.fire({
+
+                    icon:'error',
+
+                    title:'Error',
+
+                    text:r.message
+
+                });
+
+            }
+
+        },
+
+        error:function(xhr){
+
+            console.log(xhr.responseText);
+
+            Swal.fire({
+
+                icon:'error',
+
+                title:'Error',
+
+                text:'Ocurrió un error al guardar la encuesta.'
+
+            });
+
+        }
+
+    });
+
+}
 
 });
 
@@ -679,9 +751,6 @@ $(document).on("click",".btn-numero",function(){
 
 </script>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 	
 </body>
 </html>

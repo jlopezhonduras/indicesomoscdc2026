@@ -76,6 +76,17 @@ data-bs-target="#navbarPrincipal">
 				</a>
 
 			</li>
+			
+			<li class="nav-item">
+
+				<a class="dropdown-item"
+				href="/IndiceSOMOS/modulos/periodos/">
+
+				Periodos de Encuesta
+
+				</a>
+
+				</li>
 
         </ul>
 
@@ -131,6 +142,8 @@ data-bs-target="#navbarPrincipal">
     </li>
 
     <!-- ENCUESTAS -->
+		
+	
 
     <li class="nav-item dropdown">
 
@@ -144,6 +157,18 @@ data-bs-target="#navbarPrincipal">
     </a>
 
     <ul class="dropdown-menu">
+		
+		<li class="">
+
+			<a
+			class="dropdown-item"
+			href="/indicesomos/modulos/consultar_encuestas/index.php">
+
+			Consultar Encuestas
+
+			</a>
+
+		</li>
 
         <li>
             <a
