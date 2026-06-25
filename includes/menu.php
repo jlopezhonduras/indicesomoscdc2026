@@ -194,16 +194,16 @@ data-bs-target="#navbarPrincipal">
 
 </li>
 
-    <!-- REPORTES -->
+    <!-- INDICE -->
 
     <li class="nav-item dropdown">
 
-        <!--<a
+        <a
         class="nav-link dropdown-toggle"
         href="#"
         data-bs-toggle="dropdown">
 
-        Reportes
+        Indice de Inclusión LGTBI+
 
         </a>
 
@@ -212,44 +212,15 @@ data-bs-target="#navbarPrincipal">
             <li>
                 <a
                 class="dropdown-item"
-                href="#">
+                href="/indicesomos/modulos/indice/index.php">
 
-                Dashboard
-
-                </a>
-            </li>
-
-            <li>
-                <a
-                class="dropdown-item"
-                href="#">
-
-                Resultados
+                Generación Índice
 
                 </a>
             </li>
 
-            <li>
-                <a
-                class="dropdown-item"
-                href="#">
-
-                Exportar Excel
-
-                </a>
-            </li>
-
-            <li>
-                <a
-                class="dropdown-item"
-                href="#">
-
-                Exportar CSV
-
-                </a>
-            </li>
-
-        </ul>-->
+           
+        </ul>
 
     </li>
 
