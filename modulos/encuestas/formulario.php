@@ -339,14 +339,24 @@ switch($pregunta["tipo"]){
 
     $opciones = $stmtOpciones->get_result();
 
-    while($opcion = $opciones->fetch_assoc()){
+while($opcion = $opciones->fetch_assoc()){
 
-        echo '
-        <option value="'.$opcion["valor"].'">
-            '.$opcion["etiqueta"].'
-        </option>';
+    $textoMostrar = $opcion["etiqueta"];
 
+    if(
+        $opcion["valor"] == "NS" ||
+        $opcion["valor"] == "NR" ||
+        $opcion["valor"] == "NA"
+    ){
+        $textoMostrar = "-- ".$opcion["etiqueta"]." --";
     }
+
+    echo '
+    <option value="'.$opcion["valor"].'">
+        '.$textoMostrar.'
+    </option>';
+
+}
 
     echo '</select>';
 
